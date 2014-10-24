@@ -1,4 +1,5 @@
-CampaignVisitorsByTime
-======================
+# Piwik CampaignVisitorsByTime Plugin
 
-Yet another Piwik-Plugin
+## Description
+
+This plugin aggregates visitors per campaign/keyword in a more detailed interval of 15 minutes. 
