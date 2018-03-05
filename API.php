@@ -27,6 +27,6 @@ class API extends \Piwik\Plugin\API {
 	}
 
 	public function getKeywordsFromCampaignId( $idSite, $period, $date, $idSubtable, $segment = false ) {
-		return Archive::createDataTableFromArchive( 'CampaignVisitorsByTime_visitorsByTime', $idSite, $period, $date, $segment, $expanded = false, false, $idSubtable );
+		return Archive::createDataTableFromArchive( 'CampaignVisitorsByTime_visitorsByTime', $idSite, $period, $date, $segment, false, false, $idSubtable );
 	}
 }
