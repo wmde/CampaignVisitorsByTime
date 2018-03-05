@@ -23,10 +23,10 @@ use Piwik\DataTable\Row;
 class API extends \Piwik\Plugin\API {
 
 	public function getCampaigns( $idSite, $period, $date, $segment = false, $expanded = false ) {
- 		return Archive::getDataTableFromArchive( 'CampaignVisitorsByTime_visitorsByTime', $idSite, $period, $date, $segment, $expanded );
+		return Archive::createDataTableFromArchive( 'CampaignVisitorsByTime_visitorsByTime', $idSite, $period, $date, $segment, $expanded );
 	}
 
 	public function getKeywordsFromCampaignId( $idSite, $period, $date, $idSubtable, $segment = false ) {
-		return Archive::getDataTableFromArchive( 'CampaignVisitorsByTime_visitorsByTime', $idSite, $period, $date, $segment, $expanded = false, $idSubtable );
+		return Archive::createDataTableFromArchive( 'CampaignVisitorsByTime_visitorsByTime', $idSite, $period, $date, $segment, $expanded = false, false, $idSubtable );
 	}
 }
