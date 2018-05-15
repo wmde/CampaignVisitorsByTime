@@ -1,4 +1,4 @@
-# Piwik CampaignVisitorsByTime Plugin
+# Matomo CampaignVisitorsByTime Plugin
 
 ## Description
 
