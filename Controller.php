@@ -1,29 +1,21 @@
 <?php
 /**
- * Piwik - free/libre analytics platform
- *
- * @link http://piwik.org
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
- * @author Kai Nissen <kai.nissen@wikimedia.de>
- *
- * @category Piwik_Plugins
- * @package Piwik_CampaignVisitorsByTime
+ * @license GNU GPL v3+
  */
+
 namespace Piwik\Plugins\CampaignVisitorsByTime;
 
-use Piwik\Archive;
-use Piwik\ArchiveProcessor;
-use Piwik\Period;
-use Piwik\View;
 use Piwik\ViewDataTable\Factory;
 
 class Controller extends \Piwik\Plugin\Controller {
 
-	public function getCampaigns() {
+	/**
+	 * @throws \Exception
+	 */
+	public function getCampaigns(): string {
 		$view = Factory::build(
-			$defaultType = 'table',
-			$apiAction = 'CampaignVisitorsByTime.getCampaigns'/*,
-			$controllerAction = 'CampaignVisitorsByTime.getCampaigns'*/
+			'table',
+			'CampaignVisitorsByTime.getCampaigns'
 		);
 		$view->config->subtable_controller_action = 'getKeywordsFromCampaignId';
 		$view->config->show_search = true;
@@ -32,11 +24,13 @@ class Controller extends \Piwik\Plugin\Controller {
 		return $view->render();
 	}
 
-	public function getKeywordsFromCampaignId() {
+	/**
+	 * @throws \Exception
+	 */
+	public function getKeywordsFromCampaignId(): string {
 		$view = Factory::build(
-			$defaultType = 'table',
-			$apiAction = 'CampaignVisitorsByTime.getKeywordsFromCampaignId'/*,
-			$controllerAction = 'CampaignVisitorsByTime.getKeywordsFromCampaignId'*/
+			'table',
+			'CampaignVisitorsByTime.getKeywordsFromCampaignId'
 		);
 		$view->config->show_search = false;
 		$view->config->show_footer_icons = false;

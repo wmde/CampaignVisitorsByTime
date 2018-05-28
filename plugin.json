@@ -1,12 +1,12 @@
 {
     "name": "CampaignVisitorsByTime",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Report interval of 15 minutes for campaign visitors",
     "theme": false,
     "authors": [
         {
-            "name": "Kai Nissen (Wikimedia Deutschland e. V.)",
-            "email": "kai.nissen@wikimedia.de",
+            "name": "Wikimedia Deutschland e. V.",
+            "email": "fundraising-tech@wikimedia.de",
             "homepage": "https:\/\/www.wikimedia.de\/"
         }
     ],
