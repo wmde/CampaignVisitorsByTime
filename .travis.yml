@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 7.2
+
+sudo: false
+
+install:
+  - travis_retry composer install --dev
+
+script:
+  - composer validate --no-interaction
+  - make phpunit
+  - make cs
+  - make phpmd
+
+cache:
+  directories:
+    - $HOME/.composer/cache

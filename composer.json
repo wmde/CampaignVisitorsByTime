@@ -1,12 +1,22 @@
 {
     "name": "wmde/campaign-visitors-by-time",
     "description": "This plugin aggregates visitors per campaign/keyword in a more detailed interval of 15 minutes.",
+    "license": "GPL-3.0-or-later",
     "type": "library",
-    "authors": [
-        {
-            "name": "Tim Eulitz",
-            "email": "tim.eulitz@wikimedia.de"
+    "require": {
+        "php": ">=7.2"
+    },
+    "require-dev": {
+        "piwik/piwik": "~3.0",
+        "phpunit/phpunit": "~7.0",
+        "squizlabs/php_codesniffer": "~3.2",
+        "slevomat/coding-standard": "~4.5",
+        "phpmd/phpmd": "~2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Piwik\\Plugins\\CampaignVisitorsByTime\\Test\\": "tests/TestClass",
+            "Piwik\\Plugins\\CampaignVisitorsByTime\\": ""
         }
-    ],
-    "require": {}
+    }
 }
