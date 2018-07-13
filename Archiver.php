@@ -28,7 +28,7 @@ class Archiver extends \Piwik\Plugin\Archiver {
 		foreach ( $dataProcessor->getCampaigns() as $campaign => $cmpValues ) {
 			$parentRow = $this->createRow( $campaign, $cmpValues );
 
-			if ( isset( $this->keywords[$campaign] ) ) {
+			if ( !empty( $dataProcessor->getCampaignKeywordData( $campaign ) ) ) {
 				$parentRow->setSubtable( $this->createSubtable( $dataProcessor->getCampaignKeywordData( $campaign ) ) );
 			}
 			$dataTable->addRow( $parentRow );
