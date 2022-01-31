@@ -2,18 +2,18 @@
 /**
  * @license GNU GPL v3+
  */
-namespace Piwik\Plugins\CampaignVisitorsByTime\Widgets;
+namespace Matomo\Plugins\CampaignVisitorsByTime\Widgets;
 
-use Piwik\Widget\Widget;
-use Piwik\Widget\WidgetConfig;
-use Piwik\Piwik;
+use Matomo\Widget\Widget;
+use Matomo\Widget\WidgetConfig;
+use Matomo\Matomo;
 
 class GetDetailedCampaignVisitors extends Widget {
 
 	public static function configure( WidgetConfig $config ): void {
 		$config->setCategoryId( 'Referrers_Referrers' );
 		$config->setAction( 'getCampaigns' );
-		$config->setSubcategoryId( Piwik::translate( 'CampaignVisitorsByTime_menuTitle' ) );
+		$config->setSubcategoryId( Matomo::translate( 'CampaignVisitorsByTime_menuTitle' ) );
 		$config->setOrder( 100 );
 	}
 

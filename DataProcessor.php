@@ -3,9 +3,9 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime;
+namespace Matomo\Plugins\CampaignVisitorsByTime;
 
-use Piwik\Site;
+use Matomo\Site;
 
 /**
  * Processes visitor by grouping it by keyword and campaign

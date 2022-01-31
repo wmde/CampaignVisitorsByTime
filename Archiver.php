@@ -3,19 +3,19 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime;
+namespace Matomo\Plugins\CampaignVisitorsByTime;
 
 use DateTime;
 use DateTimeZone;
-use Piwik\DataTable;
-use Piwik\DataTable\Row;
-use Piwik\Site;
+use Matomo\DataTable;
+use Matomo\DataTable\Row;
+use Matomo\Site;
 use Zend_Db_Statement;
 
 /**
  * Archiver functionality for plugin CampaignVisitorsByTime
  */
-class Archiver extends \Piwik\Plugin\Archiver {
+class Archiver extends \Matomo\Plugin\Archiver {
 
 	public function aggregateDayReport() {
 		$db = new DataAccessor( $this->getLogAggregator() );
