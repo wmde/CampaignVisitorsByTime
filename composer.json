@@ -4,7 +4,7 @@
     "license": "GPL-3.0-or-later",
     "type": "library",
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.4"
     },
     "require-dev": {
         "piwik/piwik": "~3.0",
