@@ -1,30 +1,35 @@
 <?php
 
-namespace WMDE\Fundraising\Frontend\Tests\Unit\Cli;
+namespace Piwik\Plugins\CampaignVisitorsByTime\Test\Unit;
 
-use Piwik\Plugins\CampaignVisitorsByTime\Test\TestDataProcessor;
+use PHPUnit\Framework\TestCase;
+// we need to extend the system-under-test to get around Matomo static access
+use Piwik\Plugins\CampaignVisitorsByTime\Test\Fixtures\TestDataProcessor;
 
 /**
  * @covers \Piwik\Plugins\CampaignVisitorsByTime\DataProcessor
  */
-class DataProcessorTest extends \PHPUnit\Framework\TestCase {
+class DataProcessorTest extends TestCase {
 
-	const TEST_REFERER = 'test_referer';
-	const TEST_REFERER_ALT = 'test_referer_alt';
-	const TEST_HOUR = 5;
-	const TEST_MINUTES = '00';
-	const TEST_MINUTES_ALT = '15';
+	private const TEST_REFERER = 'test_referer';
+	private const TEST_REFERER_ALT = 'test_referer_alt';
+	// Date Parts for test fixture data, in UTC
+	// May in Europe/Berlin time zone will have offset of +2 because of DST
+	private const TEST_DAY = '2018-05-30';
+	private const TEST_HOUR = '05';
+	private const TEST_MINUTES = '00';
+	private const TEST_MINUTES_ALT = '15';
 
 	public function testWhenMultipleKeywordsAreUsed_campaignValuesAreCalculatedCorrectly() {
 		$rows = $this->newZendDbRowsMock( $this->getMockDatabaseData() );
 		$dataProcessor = new TestDataProcessor();
 		$dataProcessor->processDatasets( $rows );
+		$campaignData = $dataProcessor->getCampaigns();
+		// array key in Europe/Berlin time zone, DST
+		$timeSlice = '0700h';
 		$this->assertEquals(
 			40,
-			$dataProcessor->getCampaigns()[self::TEST_REFERER][$this->getStoredHour(
-				self::TEST_HOUR,
-				self::TEST_MINUTES
-			)],
+			$campaignData[self::TEST_REFERER][$timeSlice],
 			'Total for given time with timezone offset should sum up all keywords for specific 15 minute block for a specific referrer'
 		);
 	}
@@ -34,9 +39,11 @@ class DataProcessorTest extends \PHPUnit\Framework\TestCase {
 		$dataProcessor = new TestDataProcessor();
 		$dataProcessor->processDatasets( $rows );
 		$keywordData = $dataProcessor->getCampaignKeywordData( self::TEST_REFERER );
+		// array key in Europe/Berlin time zone, DST
+		$timeSlice = '0715h';
 		$this->assertEquals(
 			33,
-			$keywordData['testkeyword04'][$this->getStoredHour( self::TEST_HOUR, self::TEST_MINUTES_ALT )],
+			$keywordData['testkeyword04'][$timeSlice],
 			'Individual keywords store their own value per campaign for a specific given 15 minutes block'
 		);
 	}
@@ -69,52 +76,42 @@ class DataProcessorTest extends \PHPUnit\Framework\TestCase {
 		return $dbRows;
 	}
 
-	private function getHourInTimeZone( $hour ): int {
-		$timezone = new \DateTimeZone( 'Europe/Berlin' );
-		return $hour + $timezone->getOffset( new \DateTime() ) / 3600;
-	}
-
-
-	private function getStoredHour( int $hour, string $minutes ): string {
-		return '0' . ( $this->getHourInTimeZone( $hour ) ) . $minutes . 'h';
-	}
-
 	private function getMockDatabaseData(): array {
 		return [
 			[
 				'referer_name' => self::TEST_REFERER,
 				'referer_keyword' => 'testkeyword01',
-				'timestamp_floored' => '2018-05-30 0' . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
+				'timestamp_floored' => self::TEST_DAY . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
 				'idsite' => '1',
 				'numVisitors' => 5 ],
 			[
 				'referer_name' => self::TEST_REFERER,
 				'referer_keyword' => 'testkeyword01',
-				'timestamp_floored' => '2018-05-30 0' . self::TEST_HOUR . ':' . self::TEST_MINUTES_ALT . ':00',
+				'timestamp_floored' => self::TEST_DAY . self::TEST_HOUR . ':' . self::TEST_MINUTES_ALT . ':00',
 				'idsite' => '1',
 				'numVisitors' => 7 ],
 			[
 				'referer_name' => self::TEST_REFERER,
 				'referer_keyword' => 'testkeyword02',
-				'timestamp_floored' => '2018-05-30 0' . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
+				'timestamp_floored' => self::TEST_DAY . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
 				'idsite' => '1',
 				'numVisitors' => 15 ],
 			[
 				'referer_name' => self::TEST_REFERER,
 				'referer_keyword' => 'testkeyword03',
-				'timestamp_floored' => '2018-05-30 0' . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
+				'timestamp_floored' => self::TEST_DAY . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
 				'idsite' => '1',
 				'numVisitors' => 20 ],
 			[
 				'referer_name' => self::TEST_REFERER,
 				'referer_keyword' => 'testkeyword04',
-				'timestamp_floored' => '2018-05-30 0' . self::TEST_HOUR . ':' . self::TEST_MINUTES_ALT . ':00',
+				'timestamp_floored' => self::TEST_DAY . self::TEST_HOUR . ':' . self::TEST_MINUTES_ALT . ':00',
 				'idsite' => '1',
 				'numVisitors' => 33 ],
 			[
 				'referer_name' => self::TEST_REFERER_ALT,
 				'referer_keyword' => 'testkeyword01',
-				'timestamp_floored' => '2018-05-30 0' . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
+				'timestamp_floored' => self::TEST_DAY . self::TEST_HOUR . ':' . self::TEST_MINUTES . ':00',
 				'idsite' => '1',
 				'numVisitors' => 123 ],
 		];

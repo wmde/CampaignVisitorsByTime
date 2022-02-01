@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Piwik\\Plugins\\CampaignVisitorsByTime\\Test\\": "tests/TestClass",
+            "Piwik\\Plugins\\CampaignVisitorsByTime\\Test\\": "tests",
             "Piwik\\Plugins\\CampaignVisitorsByTime\\": ""
         }
     }

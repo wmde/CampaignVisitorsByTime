@@ -3,12 +3,12 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime\Test;
+namespace Piwik\Plugins\CampaignVisitorsByTime\Test\Fixtures;
 
 use Piwik\Plugins\CampaignVisitorsByTime\DataProcessor;
 
 /**
- * Test class to get around static access of Matomo core classes to allow for testability
+ * Extend the DataProcessor to get around static access of Matomo core classes (Site::getTimezone)
  */
 class TestDataProcessor extends DataProcessor {
 
