@@ -17,8 +17,9 @@ class DataProcessor {
 	private $siteTimezones = [];
 
 	public function processDatasets( \Zend_Db_Statement $dataSets ): void {
+		// @codingStandardsIgnoreStart
 		while ( $row = $dataSets->fetch() ) {
-
+			// @codingStandardsIgnoreEnd
 			$campaign = $row['referer_name'];
 			$keyword = $row['referer_keyword'];
 			$timestamp = $row['timestamp_floored'];

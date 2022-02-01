@@ -1,12 +1,12 @@
 language: php
 
 php:
-  - 7.2
+  - 7.4
 
 sudo: false
 
 install:
-  - travis_retry composer install --dev
+  - travis_retry composer install
 
 script:
   - composer validate --no-interaction
