@@ -3,11 +3,11 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime;
+namespace Matomo\Plugins\CampaignVisitorsByTime;
 
-use Piwik\ViewDataTable\Factory;
+use Matomo\ViewDataTable\Factory;
 
-class Controller extends \Piwik\Plugin\Controller {
+class Controller extends \Matomo\Plugin\Controller {
 
 	/**
 	 * @throws \Exception

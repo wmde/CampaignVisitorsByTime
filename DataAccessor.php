@@ -3,10 +3,10 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime;
+namespace Matomo\Plugins\CampaignVisitorsByTime;
 
-use Piwik\Common;
-use Piwik\DataAccess\LogAggregator;
+use Matomo\Common;
+use Matomo\DataAccess\LogAggregator;
 
 /**
  * Database access functionality for plugin CampaignVisitorsByTime

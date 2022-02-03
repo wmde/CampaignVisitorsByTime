@@ -3,8 +3,8 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime;
+namespace Matomo\Plugins\CampaignVisitorsByTime;
 
-class CampaignVisitorsByTime extends \Piwik\Plugin {
+class CampaignVisitorsByTime extends \Matomo\Plugin {
 
 }

@@ -4,19 +4,21 @@
     "license": "GPL-3.0-or-later",
     "type": "library",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "symfony/dependency-injection": "~5.4"
     },
     "require-dev": {
-        "piwik/piwik": "~3.0",
-        "phpunit/phpunit": "~7.0",
+        "psr/container": "^1.1",
+        "matomo/matomo": "~3.0",
+        "phpunit/phpunit": "~9.0",
         "squizlabs/php_codesniffer": "~3.2",
-        "slevomat/coding-standard": "~4.5",
-        "phpmd/phpmd": "~2.6"
+        "slevomat/coding-standard": "~7.0",
+        "phpmd/phpmd": "~2.11"
     },
     "autoload": {
         "psr-4": {
-            "Piwik\\Plugins\\CampaignVisitorsByTime\\Test\\": "tests",
-            "Piwik\\Plugins\\CampaignVisitorsByTime\\": ""
+            "Matomo\\Plugins\\CampaignVisitorsByTime\\Test\\": "tests",
+            "Matomo\\Plugins\\CampaignVisitorsByTime\\": ""
         }
     }
 }

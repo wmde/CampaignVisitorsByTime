@@ -2,17 +2,17 @@
 /**
  * @license GNU GPL v3+
  */
-namespace Piwik\Plugins\CampaignVisitorsByTime;
+namespace Matomo\Plugins\CampaignVisitorsByTime;
 
-use Piwik\Archive;
-use Piwik\DataTable;
+use Matomo\Archive;
+use Matomo\DataTable;
 
 /**
  * API for plugin CampaignVisitorsByTime
  *
- * @method static \Piwik\Plugins\CampaignVisitorsByTime\API getInstance()
+ * @method static \Matomo\Plugins\CampaignVisitorsByTime\API getInstance()
  */
-class API extends \Piwik\Plugin\API {
+class API extends \Matomo\Plugin\API {
 
 	public function getCampaigns( $idSite, $period, $date, $segment = false, $expanded = false ): DataTable {
 		return Archive::createDataTableFromArchive(
