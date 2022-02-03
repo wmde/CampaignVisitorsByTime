@@ -1,6 +1,6 @@
 {
     "name": "CampaignVisitorsByTime",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "Report interval of 15 minutes for campaign visitors",
     "theme": false,
     "authors": [
