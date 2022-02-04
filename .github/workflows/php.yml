@@ -1,0 +1,77 @@
+name: PHP Composer
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    # ubuntu contains php by default (2022)
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone matomo-org/matomo
+      uses: actions/checkout@v2
+      with:
+        php-version: '7.4'
+        repository: matomo-org/matomo
+        submodules: true
+        ref: 4.7.0
+        
+
+    #- name: Cache Composer packages
+    #  id: composer-cache
+    #  uses: actions/cache@v2
+    #  with:
+    #    path: vendor
+    #    key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+    #    restore-keys: |
+    #      ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: debug
+      run: |
+        pwd
+        ls -la
+        ls -la plugins
+      
+      
+    - name: Clone plugin repo into plugins subdirectory of the matomo installation
+      uses: actions/checkout@v2
+      with:
+        repository: wmde/CampaignVisitorsByTime
+        path: plugins/CampaignVisitorsByTime
+        #ref: TODO
+
+    - name: debug 2
+      run: |
+        pwd
+        ls -la
+        ls -la plugins
+
+    - name: Create config.ini.php with content for phpunit
+      run: |
+        echo "; <?php exit; ?>" > config/config.ini.php
+
+   # - name: Run unit tests
+   #   run: ./console tests:run plugins/CampaignVisitorsByTime/tests/Unit/DataProcessorTest.php
+
+    - name: Install plugin dependencies
+      run: |
+        # composer install --prefer-dist
+        composer update --prefer-dist --with-all-dependencies
+      working-directory: plugins/CampaignVisitorsByTime
+      
+    - name: Run phpcs
+      run: vendor/bin/phpcs
+      working-directory: plugins/CampaignVisitorsByTime
+      
+    - name: Run phpmd
+      run: vendor/bin/phpmd
+      working-directory: plugins/CampaignVisitorsByTime
+      
