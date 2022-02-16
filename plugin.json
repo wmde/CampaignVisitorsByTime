@@ -11,6 +11,6 @@
         }
     ],
     "require": {
-        "matomo": ">=3.3.0-stable,<4.0.0-b1"
+        "matomo": ">=4.0.0-b1"
     }
 }
