@@ -3,7 +3,7 @@
  * @license GNU GPL v3+
  */
 
-namespace Matomo\Plugins\CampaignVisitorsByTime;
+namespace Piwik\Plugins\CampaignVisitorsByTime;
 
 use Matomo\ViewDataTable\Factory;
 

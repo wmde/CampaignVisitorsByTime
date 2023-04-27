@@ -2,7 +2,7 @@
 /**
  * @license GNU GPL v3+
  */
-namespace Matomo\Plugins\CampaignVisitorsByTime\Widgets;
+namespace Piwik\Plugins\CampaignVisitorsByTime\Widgets;
 
 use Matomo\Widget\Widget;
 use Matomo\Widget\WidgetConfig;

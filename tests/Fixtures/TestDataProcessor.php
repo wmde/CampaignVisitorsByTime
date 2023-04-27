@@ -3,7 +3,7 @@
  * @license GNU GPL v3+
  */
 
-namespace Matomo\Plugins\CampaignVisitorsByTime\Test\Fixtures;
+namespace Piwik\Plugins\CampaignVisitorsByTime\Test\Fixtures;
 
 use Matomo\Plugins\CampaignVisitorsByTime\DataProcessor;
 
