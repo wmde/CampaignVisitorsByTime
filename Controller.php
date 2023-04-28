@@ -5,9 +5,9 @@
 
 namespace Piwik\Plugins\CampaignVisitorsByTime;
 
-use Matomo\ViewDataTable\Factory;
+use Piwik\ViewDataTable\Factory;
 
-class Controller extends \Matomo\Plugin\Controller {
+class Controller extends \Piwik\Plugin\Controller {
 
 	/**
 	 * @throws \Exception

@@ -4,15 +4,15 @@
  */
 namespace Piwik\Plugins\CampaignVisitorsByTime;
 
-use Matomo\Archive;
-use Matomo\DataTable;
+use Piwik\Archive;
+use Piwik\DataTable;
 
 /**
  * API for plugin CampaignVisitorsByTime
  *
- * @method static \Matomo\Plugins\CampaignVisitorsByTime\API getInstance()
+ * @method static \Piwik\Plugins\CampaignVisitorsByTime\API getInstance()
  */
-class API extends \Matomo\Plugin\API {
+class API extends \Piwik\Plugin\API {
 
 	public function getCampaigns( $idSite, $period, $date, $segment = false, $expanded = false ): DataTable {
 		return Archive::createDataTableFromArchive(

@@ -5,8 +5,8 @@
 
 namespace Piwik\Plugins\CampaignVisitorsByTime;
 
-use Matomo\Common;
-use Matomo\DataAccess\LogAggregator;
+use Piwik\Common;
+use Piwik\DataAccess\LogAggregator;
 
 /**
  * Database access functionality for plugin CampaignVisitorsByTime

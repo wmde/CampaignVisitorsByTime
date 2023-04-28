@@ -5,7 +5,7 @@
 
 namespace Piwik\Plugins\CampaignVisitorsByTime;
 
-use Matomo\Site;
+use Piwik\Site;
 
 /**
  * Processes visitor by grouping it by keyword and campaign

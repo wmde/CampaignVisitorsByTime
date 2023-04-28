@@ -5,6 +5,6 @@
 
 namespace Piwik\Plugins\CampaignVisitorsByTime;
 
-class CampaignVisitorsByTime extends \Matomo\Plugin {
+class CampaignVisitorsByTime extends \Piwik\Plugin {
 
 }

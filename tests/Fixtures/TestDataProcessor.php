@@ -5,7 +5,7 @@
 
 namespace Piwik\Plugins\CampaignVisitorsByTime\Test\Fixtures;
 
-use Matomo\Plugins\CampaignVisitorsByTime\DataProcessor;
+use Piwik\Plugins\CampaignVisitorsByTime\DataProcessor;
 
 /**
  * Extend the DataProcessor to get around static access of Matomo core classes (Site::getTimezone)

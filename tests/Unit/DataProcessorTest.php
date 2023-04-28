@@ -4,10 +4,10 @@ namespace Piwik\Plugins\CampaignVisitorsByTime\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 // we need to extend the system-under-test to get around Matomo static access
-use Matomo\Plugins\CampaignVisitorsByTime\Test\Fixtures\TestDataProcessor;
+use Piwik\Plugins\CampaignVisitorsByTime\Test\Fixtures\TestDataProcessor;
 
 /**
- * @covers \Matomo\Plugins\CampaignVisitorsByTime\DataProcessor
+ * @covers \Piwik\Plugins\CampaignVisitorsByTime\DataProcessor
  */
 class DataProcessorTest extends TestCase {
 
