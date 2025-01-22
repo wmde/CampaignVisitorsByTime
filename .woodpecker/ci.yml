@@ -1,0 +1,42 @@
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      lfs: false
+
+steps:
+  - name: build
+    image: registry.gitlab.com/fun-tech/fundraising-frontend-docker:latest
+    commands:
+      - mkdir -p /woodpecker/src/github.com/matomo-org
+      
+      # Clone and configure Matomo with our plugin as a symlink
+      - git clone --depth=1 -b 4.16.1  https://github.com/matomo-org/matomo /woodpecker/src/github.com/matomo-org/matomo
+      - ln -s $CI_WORKSPACE /woodpecker/src/github.com/matomo-org/matomo/plugins/CampaignVisitorsByTime
+      - cp $CI_WORKSPACE/.ci/config.ini.php /woodpecker/src/github.com/matomo-org/matomo/config/config.ini.php
+
+      # Create database environment with fixtures
+      - cd /woodpecker/src/github.com/matomo-org/matomo/
+      # The fixture script runs the `mysql` command, we need to install it
+      - apt update
+      - apt install -y mariadb-client
+      - composer install --ignore-platform-req=ext-gd
+      # the fixture setup needs a running web server, we'll start one in the background
+      # and kill it when the fixture setup is done
+      - php -S 0.0.0.0:8080 &
+      - PHP_PID=$!
+      - php -d memory_limit=8G console tests:setup-fixture UITestFixture
+      - kill $PHP_PID
+
+      # Finally run the unit test
+      # - ./console tests:run plugins/CampaignVisitorsByTime/tests/Unit/DataProcessorTest.php
+
+services:
+
+  - name: database
+    image: mariadb:10.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_USER=matomo
+      - MYSQL_PASSWORD=matomo
+      - MYSQL_DATABASE=matomo
