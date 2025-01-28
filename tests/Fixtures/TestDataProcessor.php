@@ -3,7 +3,7 @@
  * @license GNU GPL v3+
  */
 
-namespace Piwik\Plugins\CampaignVisitorsByTime\Test\Fixtures;
+namespace Piwik\Plugins\CampaignVisitorsByTime\tests\Fixtures;
 
 use Piwik\Plugins\CampaignVisitorsByTime\DataProcessor;
 

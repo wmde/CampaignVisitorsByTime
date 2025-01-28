@@ -29,7 +29,7 @@ steps:
       - kill $PHP_PID
 
       # Finally run the unit test
-      # - ./console tests:run plugins/CampaignVisitorsByTime/tests/Unit/DataProcessorTest.php
+      - ./console tests:run plugins/CampaignVisitorsByTime/tests/Unit/DataProcessorTest.php
 
 services:
 
