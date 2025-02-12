@@ -10,6 +10,7 @@
     <arg value="p"/>
 
     <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>.ci/*</exclude-pattern>
 
     <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
     <rule ref="Generic.Classes" />
