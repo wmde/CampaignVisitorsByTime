@@ -8,9 +8,13 @@ steps:
   - name: build
     image: registry.gitlab.com/fun-tech/fundraising-frontend-docker:latest
     commands:
-      - mkdir -p /woodpecker/src/github.com/matomo-org
+      # Run quick static analysis
+      - composer install --prefer-dist --no-progress --no-interaction
+      - vendor/squizlabs/php_codesniffer/bin/phpcs .
+      - vendor/phpmd/phpmd/src/bin/phpmd . text phpmd.xml --exclude vendor/
       
       # Clone and configure Matomo with our plugin as a symlink
+      - mkdir -p /woodpecker/src/github.com/matomo-org
       - git clone --depth=1 -b 4.16.1  https://github.com/matomo-org/matomo /woodpecker/src/github.com/matomo-org/matomo
       - ln -s $CI_WORKSPACE /woodpecker/src/github.com/matomo-org/matomo/plugins/CampaignVisitorsByTime
       - cp $CI_WORKSPACE/.ci/config.ini.php /woodpecker/src/github.com/matomo-org/matomo/config/config.ini.php
