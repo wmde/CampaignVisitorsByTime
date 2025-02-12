@@ -11,7 +11,7 @@ steps:
       - mkdir -p /woodpecker/src/github.com/matomo-org
       
       # Clone and configure Matomo with our plugin as a symlink
-      - git clone --depth=1 -b 4.16.1  https://github.com/matomo-org/matomo /woodpecker/src/github.com/matomo-org/matomo
+      - git clone --depth=1 -b 5.2.2  https://github.com/matomo-org/matomo /woodpecker/src/github.com/matomo-org/matomo
       - ln -s $CI_WORKSPACE /woodpecker/src/github.com/matomo-org/matomo/plugins/CampaignVisitorsByTime
       - cp $CI_WORKSPACE/.ci/config.ini.php /woodpecker/src/github.com/matomo-org/matomo/config/config.ini.php
 
