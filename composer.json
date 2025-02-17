@@ -4,13 +4,9 @@
     "license": "GPL-3.0-or-later",
     "type": "library",
     "require": {
-        "php": ">=7.4",
-        "symfony/dependency-injection": "~5.4"
+        "php": ">=8.3"
     },
     "require-dev": {
-        "psr/container": "^1.1",
-        "matomo/matomo": "~3.0",
-        "phpunit/phpunit": "~9.0",
         "squizlabs/php_codesniffer": "~3.2",
         "slevomat/coding-standard": "~7.0",
         "phpmd/phpmd": "~2.11"
@@ -20,5 +16,11 @@
             "Matomo\\Plugins\\CampaignVisitorsByTime\\Test\\": "tests",
             "Matomo\\Plugins\\CampaignVisitorsByTime\\": ""
         }
-    }
+    },
+	"config": {
+		"allow-plugins": {
+			"composer/package-versions-deprecated": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }
